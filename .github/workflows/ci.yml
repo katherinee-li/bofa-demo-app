@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build & test banking-app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - run: npm ci
+      - run: npx ng build
+      - run: npx ng test --watch=false --browsers=ChromeHeadlessCI
+
+  build-against-library-head:
+    name: Build against @bofa/ds head
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: consumer
+      - uses: actions/checkout@v4
+        with:
+          repository: katherinee-li/bofa-demo-ui-kit
+          path: library
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Build and pack the library from source
+        working-directory: library
+        run: |
+          npm ci
+          npx ng build ds
+          cd dist/ds && npm pack --pack-destination "$GITHUB_WORKSPACE"
+      - name: Install the library head into the consumer
+        working-directory: consumer
+        run: |
+          npm ci
+          npm install "$(ls "$GITHUB_WORKSPACE"/bofa-ds-*.tgz)"
+      - run: npx ng build
+        working-directory: consumer

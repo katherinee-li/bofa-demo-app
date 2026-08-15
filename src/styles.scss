@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@use '@bofa/ds/src/styles/theme' as ds;
+
+@include mat.core();
+@include ds.bofa-design-system();
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Connections, 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f6f8;
+}

@@ -1,0 +1,14 @@
+.app-toolbar {
+  &__brand {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__link--active {
+    text-decoration: underline;
+  }
+}
