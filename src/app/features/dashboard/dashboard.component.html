@@ -1,0 +1,41 @@
+<section class="dashboard">
+  <header class="dashboard__header">
+    <h1>Accounts overview</h1>
+    <p *ngIf="auth.session | async as user" class="dashboard__greeting">
+      Signed in as {{ user.displayName }} ({{ user.customerId }})
+    </p>
+  </header>
+
+  <bofa-alert-banner
+    *ngIf="showFraudAlert"
+    severity="critical"
+    title="Unusual activity detected"
+    [dismissible]="true"
+    (dismissed)="dismissFraudAlert()"
+  >
+    We blocked a $412.00 card authorization in Reno, NV. Review it in the security center.
+  </bofa-alert-banner>
+
+  <div class="dashboard__accounts">
+    <bofa-account-card
+      *ngFor="let account of accounts$ | async"
+      [accountName]="account.accountName"
+      [accountNumber]="account.accountNumber"
+      [balance]="account.balance"
+    >
+      <p class="dashboard__available">Available: {{ account.availableBalance | currency }}</p>
+      <bofa-button cardActions variant="secondary" (pressed)="loadTransactions(account.accountNumber)">
+        View activity
+      </bofa-button>
+    </bofa-account-card>
+  </div>
+
+  <h2>Recent activity</h2>
+  <bofa-transaction-table [transactions]="transactions"></bofa-transaction-table>
+
+  <h2>Statements &amp; documents</h2>
+  <bofa-statement-tabs
+    [periods]="statementPeriods"
+    (periodChanged)="onStatementPeriodChanged($event)"
+  ></bofa-statement-tabs>
+</section>

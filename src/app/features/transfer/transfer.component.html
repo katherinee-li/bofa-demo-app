@@ -1,0 +1,23 @@
+<section class="transfer">
+  <h1>Transfer money</h1>
+
+  <bofa-alert-banner *ngIf="confirmation" severity="success" title="Transfer submitted">
+    {{ confirmation }}
+  </bofa-alert-banner>
+
+  <bofa-alert-banner *ngIf="stepUpRequired" severity="info" title="Additional verification">
+    Transfers of $1,000 or more require multifactor verification.
+  </bofa-alert-banner>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="transfer__form">
+    <bofa-currency-input
+      formControlName="amount"
+      label="Amount"
+      hint="Transfers of $1,000 or more require MFA step-up"
+    ></bofa-currency-input>
+
+    <bofa-button variant="primary" [loading]="submitting" (pressed)="submit()">
+      Submit transfer
+    </bofa-button>
+  </form>
+</section>
