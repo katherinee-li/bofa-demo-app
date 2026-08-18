@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AnalyticsService } from '../../core/analytics/analytics.service';
@@ -8,6 +8,7 @@ import { AuthService } from '../../core/auth/auth.service';
     selector: 'app-transfer',
     templateUrl: './transfer.component.html',
     styleUrls: ['./transfer.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TransferComponent {
