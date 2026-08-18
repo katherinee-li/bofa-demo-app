@@ -1,7 +1,8 @@
 @use '@angular/material' as mat;
 @use '@bofa/ds/src/styles/theme' as ds;
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 @include ds.bofa-design-system();
 
 html,

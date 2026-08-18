@@ -5,9 +5,10 @@ import { AnalyticsService } from '../../core/analytics/analytics.service';
 import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
-  selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.scss'],
+    selector: 'app-transfer',
+    templateUrl: './transfer.component.html',
+    styleUrls: ['./transfer.component.scss'],
+    standalone: false
 })
 export class TransferComponent {
   readonly form = this.fb.nonNullable.group({
