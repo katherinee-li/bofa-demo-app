@@ -8,10 +8,10 @@ Angular 14→18 migration demo.
 
 | Item | Value |
 |---|---|
-| Angular | 16.2.x |
-| Angular Material | 16.2.x |
+| Angular | 18.2.x |
+| Angular Material | 18.2.x |
 | Node | 18.x |
-| Library dependency | `@bofa/ds` installed from `vendor/bofa-ds-3.2.0.tgz` (stands in for the internal registry) |
+| Library dependency | `@bofa/ds` installed from `vendor/bofa-ds-5.0.0.tgz` (stands in for the internal registry) |
 
 ## Commands
 
