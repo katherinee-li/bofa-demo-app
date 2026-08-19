@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Retail Digital Banking — @bofa/ds migration demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root { color-scheme: light; }
+      body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #f4f5f7;
+        color: #101828;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+      main { max-width: 720px; padding: 40px 24px; }
+      h1 { font-size: 28px; margin: 0 0 8px; }
+      p.sub { margin: 0 0 32px; color: #475467; }
+      .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      a.card {
+        display: block;
+        padding: 20px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid #e4e7ec;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+      }
+      a.card:hover { border-color: #b42318; }
+      .tag { font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #b42318; }
+      .ver { font-size: 20px; font-weight: 600; margin: 6px 0 4px; }
+      .desc { font-size: 14px; color: #475467; margin: 0; }
+      @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Retail Digital Banking</h1>
+      <p class="sub">
+        Demo consumer app for the <code>@bofa/ds</code> shared design system. Both builds are the same
+        application source, before and after the framework migration.
+      </p>
+      <div class="cards">
+        <a class="card" href="./before/">
+          <div class="tag">Before</div>
+          <div class="ver">Angular 16.2 · @bofa/ds 3.2.0</div>
+          <p class="desc">Baseline on <code>main</code>, still on the pre-MDC Material components.</p>
+        </a>
+        <a class="card" href="./after/">
+          <div class="tag">After</div>
+          <div class="ver">Angular 18.2 · @bofa/ds 5.0.0</div>
+          <p class="desc">Migration branch: MDC Material components and the M2 theming API.</p>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
