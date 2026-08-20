@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
       - run: npx ng build
@@ -26,13 +26,23 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: consumer
+      - name: Resolve library ref
+        id: library
+        run: |
+          ref=main
+          if [ -f consumer/.upstream-library-ref ]; then
+            ref=$(tr -d '[:space:]' < consumer/.upstream-library-ref)
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "Building library from ref: $ref"
       - uses: actions/checkout@v4
         with:
           repository: katherinee-li/bofa-demo-ui-kit
+          ref: ${{ steps.library.outputs.ref }}
           path: library
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: consumer/.nvmrc
       - name: Build and pack the library from source
         working-directory: library
         run: |
