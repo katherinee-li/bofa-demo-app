@@ -15,7 +15,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: npx ng build
       - run: npx ng test --watch=false --browsers=ChromeHeadlessCI
 
@@ -46,13 +46,13 @@ jobs:
       - name: Build and pack the library from source
         working-directory: library
         run: |
-          npm ci --legacy-peer-deps
+          npm ci
           npx ng build ds
           cd dist/ds && npm pack --pack-destination "$GITHUB_WORKSPACE"
       - name: Install the library head into the consumer
         working-directory: consumer
         run: |
-          npm ci --legacy-peer-deps
-          npm install --legacy-peer-deps "$(ls "$GITHUB_WORKSPACE"/bofa-ds-*.tgz)"
+          npm ci
+          npm install "$(ls "$GITHUB_WORKSPACE"/bofa-ds-*.tgz)"
       - run: npx ng build
         working-directory: consumer
