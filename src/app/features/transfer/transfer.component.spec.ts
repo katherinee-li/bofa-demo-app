@@ -24,6 +24,19 @@ describe('TransferComponent', () => {
     fixture.detectChanges();
   });
 
+  it('renders the amount control inside a Material form field', () => {
+    const infix = fixture.nativeElement.querySelector('.mat-form-field-infix');
+
+    expect(infix).not.toBeNull();
+    expect(infix.querySelector('input')?.getAttribute('type')).toBe('number');
+  });
+
+  it('renders the hint text under the amount control', () => {
+    const hint = fixture.nativeElement.querySelector('.mat-form-field-subscript-wrapper');
+
+    expect(hint?.textContent).toContain('require MFA step-up');
+  });
+
   it('rejects a submit with no amount', () => {
     component.submit();
 
