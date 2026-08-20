@@ -1,7 +1,11 @@
 @use '@angular/material' as mat;
 @use '@bofa/ds/src/styles/theme' as ds;
 
+// mat.core() no longer emits default typography, so the hierarchy classes are included explicitly.
+@include mat.all-component-typographies();
 @include mat.core();
+
+// Base theme styles come from the design system's own all-component-themes include.
 @include ds.bofa-design-system();
 
 html,
