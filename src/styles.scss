@@ -3,6 +3,7 @@
 
 @include mat.core();
 @include ds.bofa-design-system();
+@include mat.typography-hierarchy(ds.$bofa-typography);
 
 html,
 body {
