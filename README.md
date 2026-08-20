@@ -30,7 +30,7 @@ npx ng serve
 
 ## Dependencies
 
-- **Angular**: 14.2.x
+- **Angular**: 18.2.x
 - **@bofa/ds**: Shared design system components
 - **Angular Material**: UI component framework
 - **RxJS**: Reactive programming for state management
@@ -52,4 +52,4 @@ User interactions and page views are tracked through the integrated analytics SD
 
 ## Version
 
-Current version: 1.0.0
+Current version: 2.0.0
